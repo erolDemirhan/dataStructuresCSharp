@@ -97,20 +97,18 @@ namespace singlyLinkedList
         /** Delete the index-th node in the linked list, if the index is valid. */
         public void deleteAtIndex(int index)
         {
-            SinglyListNode cur = getNode(index);
-            if (cur == null)
+            if(head == null)
             {
                 return;
             }
-            SinglyListNode prev = getNode(index-1);
-            SinglyListNode next = cur.next;
-            if (prev != null)
+            if (index == 0)
             {
-                prev.next = next;
-            }else
-            {
-                head = next;
+                head = head.next;
+                return;
             }
+               
+            SinglyListNode prev = getNode(index-1);
+            prev.next = prev.next.next;
         }
 
     }
@@ -125,9 +123,7 @@ namespace singlyLinkedList
             obj.addAtTail(4);
             obj.addAtTail(5);
             obj.addAtIndex(3, 6);
-            obj.deleteAtIndex(3);
-
-            Console.ReadLine();           
+            obj.deleteAtIndex(3);       
         }
     }
 }
